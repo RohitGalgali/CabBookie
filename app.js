@@ -11,7 +11,7 @@ app.get('/', function(req,res){
 app.get('/availablecars/:id', function(req,res){
     if(req.params.id == 'a2p')
     {
-        res.render("availableCars");
+        res.render("AvailableCars");
     }
     else if(req.params.id == 'p2a')
     {
@@ -24,15 +24,15 @@ app.get('/availablecars/:id', function(req,res){
 app.get('/cardetails/:id', function(req,res){
     if(req.params.id == 'enjoy')
     {
-        res.render("CarDetails");
+        res.render("CarDetails", {name: "Enjoy", model: "Zxi"});
     }
     else if(req.params.id == 'etios')
     {
-        res.render("CarDetails");
+        res.render("CarDetails", {name: "Etios", model: "Zxi"});
     }
     else if(req.params.id == 'innova')
     {
-        res.render("CarDetails");
+        res.render("CarDetails", {name: "Innova", model: "Zxi"});
     }
     // res.sendFile(path.join(__dirname, 'View', 'AvailableCars.html'));
     console.log(req.params.id);
