@@ -21,6 +21,23 @@ app.get('/availablecars/:id', function(req,res){
     console.log(req.params.id);
 })
 
+app.get('/cardetails/:id', function(req,res){
+    if(req.params.id == 'enjoy')
+    {
+        res.render("CarDetails");
+    }
+    else if(req.params.id == 'etios')
+    {
+        res.render("CarDetails");
+    }
+    else if(req.params.id == 'innova')
+    {
+        res.render("CarDetails");
+    }
+    // res.sendFile(path.join(__dirname, 'View', 'AvailableCars.html'));
+    console.log(req.params.id);
+})
+
 
 app.use(express.static('Resources'));
 
