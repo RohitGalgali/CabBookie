@@ -1,6 +1,5 @@
 var express = require("express");
 var app = express();
-var path = require('path');
 
 app.set('view engine', 'ejs');
 
@@ -11,7 +10,7 @@ app.get('/', function(req,res){
 app.get('/availablecars/:id', function(req,res){
     if(req.params.id == 'a2p')
     {
-        res.render("availableCars");
+        res.render("AvailableCars");
     }
     else if(req.params.id == 'p2a')
     {
