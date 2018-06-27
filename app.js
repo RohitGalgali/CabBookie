@@ -24,15 +24,15 @@ app.get('/availablecars/:id', function(req,res){
 app.get('/cardetails/:id', function(req,res){
     if(req.params.id == 'enjoy')
     {
-        res.render("CarDetails");
+        res.render("CarDetails", {name: "Enjoy", model: "vxi"});
     }
     else if(req.params.id == 'etios')
     {
-        res.render("CarDetails");
+        res.render("CarDetails", {name: "Etios", model: "vxi"});
     }
     else if(req.params.id == 'innova')
     {
-        res.render("CarDetails");
+        res.render("CarDetails", {name: "Innova", model: "vxi"});
     }
     // res.sendFile(path.join(__dirname, 'View', 'AvailableCars.html'));
     console.log(req.params.id);
