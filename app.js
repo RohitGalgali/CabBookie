@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+const carModel = require("./Model/CarModel")
 
 app.set('view engine', 'ejs');
 
@@ -23,20 +24,19 @@ app.get('/availablecars/:id', function(req,res){
 app.get('/cardetails/:id', function(req,res){
     if(req.params.id == 'enjoy')
     {
-        res.render("CarDetails", {name: "Enjoy", model: "vxi"});
+        res.render("CarDetails", {name: carModel.carName, seatArray: carModel.getAvailableSeats()});
     }
     else if(req.params.id == 'etios')
     {
-        res.render("CarDetails", {name: "Etios", model: "vxi"});
+        res.render("CarDetails", {name: carModel.carName, seatArray: carModel.getAvailableSeats()});
     }
     else if(req.params.id == 'innova')
     {
-        res.render("CarDetails", {name: "Innova", model: "vxi"});
+        res.render("CarDetails", {name: carModel.carName, seatArray: carModel.getAvailableSeats()});
     }
     // res.sendFile(path.join(__dirname, 'View', 'AvailableCars.html'));
     console.log(req.params.id);
 })
-
 
 app.use(express.static('Resources'));
 

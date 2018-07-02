@@ -15,13 +15,13 @@
   <div class="container">
     <h2>Available Cars</h2>
     <div class="list-group">
-      <a href="#" class="list-group-item">
+      <div class="list-group-item">
         <h4 class="list-group-item-heading">Enjoy</h4>
         <div>
           <table>
             <tr>
               <td>
-                <a href="/cardetails/enjoy" class="btn btn-primary">Book</a>
+                <button class="btn btn-primary" onclick="GetCarDetails()">Book</button>
               </td>
               <td>
                 <p>Seat Available</p>
@@ -29,8 +29,8 @@
             </tr>
           </table>
         </div>
-      </a>
-      <a href="#" class="list-group-item">
+      </div>
+      <div class="list-group-item">
         <h4 class="list-group-item-heading">Etios</h4>
         <div>
           <table>
@@ -44,8 +44,8 @@
             </tr>
           </table>
         </div>
-      </a>
-      <a href="#" class="list-group-item">
+      </div>
+      <div class="list-group-item">
         <h4 class="list-group-item-heading">Innova</h4>
         <div>
           <table>
@@ -59,10 +59,22 @@
             </tr>
           </table>
         </div>
-      </a>
+      </div>
     </div>
   </div>
+  <div id="BookingArea">
 
+  </div>
 </body>
+
+<script>
+  function GetCarDetails() {
+    var para = document.createElement("p");
+    var node = document.createTextNode("This is new.");
+    para.appendChild(node);
+    var element = document.getElementById("BookingArea");
+    element.appendChild(para);
+  }
+</script>
 
 </html>
