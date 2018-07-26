@@ -9,10 +9,10 @@ and open the template in the editor.
 </head>
 <body>
 <h1>PayUMoney Payment Request Form </h1>
-<form action="https://test.payu.in/_payment."  name="payuform" method=POST >
+<form action="https://test.payu.in/_payment"  name="payuform" method=POST >
 <input type="hidden" name="key"value="UFu3ed" />
-<input type="hidden" name="hash_string" value="BJZPBL6X|txnid|amount|productinfo|firstname|email|||||||||||DiaeHToBX8" />
-<input type="hidden" name="hash" value= "BJZPBL6X|txnid|amount|productinfo|firstname|email|||||||||||DiaeHToBX8"/>
+<input type="hidden" name="hash_string" value="" />
+<input type="hidden" name="hash" id="hash" value= ""/>
 <input type="hidden" name="txnid" value="AHJ3112"/>
 <table>
 <tr>
@@ -90,13 +90,35 @@ and open the template in the editor.
 <td>PG: </td>
 <td><input name="pg"  /></td>
 </tr>
-<td colspan="4"><input type="submit" value="Submit"  /></td>
+<td colspan="4"><input type="submit" value=""  onclick="Makecall()"/></td>
 </tr>
 </table>
 </form>
 </body>
 <script>
-     
+     function Makecall(){
+
+        // var xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function () {
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             var myObj = JSON.parse(this.responseText);
+        //             alert(myObj["hash"]);
+        //             document.getElementById("hash").value = myObj["hash"];
+        //             //myObj["coord"].lat + "<br>" + myObj["coord"].lon;
+        //         }
+        //     };
+        //     xhttp.open("GET", "http://localhost:777/createHash/"+'JBZaLc|AHJ3112|100|ABCD|Rohit|rohit.galgali@gmail.com|2222222||||||||||', true);
+        //     xhttp.send();
+        var data = { preHashString: 'JBZaLc|AHJ3112|100|ABCD|Rohit|rohit.galgali@gmail.com|2222222||||||||||'};
+        var url = 'http://localhost:777/createHash';
+        $http.post(url, data).success(function (data, status) {
+            console.log(status);
+            if (status == 200) {
+                document.getElementById('hash').value = data.hash;
+                document.getElementById('paymentForm').submit();
+            }
+        });
+     }
       
 </script>
 </html>

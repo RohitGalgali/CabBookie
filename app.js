@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+var sha512 = require("js-sha512");
 const carModel = require("./Model/CarModel")
 
 app.set('view engine', 'ejs');
@@ -42,12 +43,14 @@ app.get('/BookingDetails/:id',function(req,res){
     res.render("BookingDetails",{seatNumber: req.params.id});
 })
 
-app.get("/hash", function(req,res){
-    getHash(){
-        var hashSequence = "UFu3ed|AHJ3112|100|ABC|Rohit|rohit.galgali@gmail.com|||||||||||DiaeHToBX8";
-        var hash = sha512(hashString).toLowerCase();
-      }
-}) 
+app.post('/createHash/', function (req, res) {
+    console.log('hello');
+    var salt = 'GQs7yium';
+    var hash = sha512(req.body.preHashString + salt);
+    console.log(hash);
+    res.send({success : true, hash: hash});
+});
+
 app.use(express.static('Resources'));
 
 app.listen(777);
