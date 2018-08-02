@@ -1,8 +1,9 @@
 var express = require("express");
 var app = express();
 var sha512 = require("js-sha512");
-const carModel = require("./Model/CarModel")
-
+const carModel = require("./Model/CarModel");
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: true });
 app.set('view engine', 'ejs');
 
 app.get('/', function(req,res){
@@ -40,15 +41,27 @@ app.get('/cardetails/:id', function(req,res){
 })
 
 app.get('/BookingDetails/:id',function(req,res){
-    res.render("BookingDetails",{seatNumber: req.params.id});
+    res.render("BookingDetails",{seatNumber: req.params.id, });
 })
 
-app.post('/createHash/', function (req, res) {
-    console.log('hello');
-    var salt = 'GQs7yium';
-    var hash = sha512(req.body.preHashString + salt);
+app.post('/payMoney', urlencodedParser, function (req, res) {
+    var salt = 'DiaeHToBX8';
+    var hashString = '';
+    hashString += "BJZPBL6X|";
+    hashString += req.body.txnid + "|";
+    hashString += req.body.amount + "|";
+    hashString += req.body.firstname + "|";
+    hashString += req.body.email + "|";
+    hashString += "||||||||||"
+    hashString += salt;
+    console.log(hashString);
+    //console.log(req.body);
+    // var salt = 'DiaeHToBX8';
+    var hash = sha512(hashString);
     console.log(hash);
-    res.send({success : true, hash: hash});
+    // res.send({success : true}); 
+    // , hash: hash
+    res.send(req.body);
 });
 
 app.use(express.static('Resources'));
