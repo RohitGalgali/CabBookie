@@ -8,11 +8,8 @@ and open the template in the editor.
 <head >
 </head>
 <body>
-<h1>PayUMoney Payment Request Form </h1>
-<form action="/payMoney"  name="payuform" method=POST >
-<input type="hidden" name="key"value="UFu3ed" />
-<input type="hidden" name="hash_string" value="" />
-<input type="hidden" name="hash" id="hash" value= ""/>
+<h1>Seat booking payment details</h1>
+<form action="/payMoney" name="payuform" method=POST >
 <input type="hidden" name="txnid" value="AHJ3112"/>
 <table>
 <tr>
@@ -28,29 +25,26 @@ and open the template in the editor.
 <td>Email: </td>
 <td><input name="email" id="email"/></td>
 <td>Phone: </td>
-<td><input name="phone"  /></td>
+<td><input name="phone"  id="phone"/></td>
 </tr>
 <tr>
 <td>Product Info: </td>
-<td colspan="3"><textarea name="productinfo" >  </textarea></td>
+<td colspan="3"><textarea name="productinfo" id= "productinfo" >  </textarea></td>
 </tr>
-<tr>
+<!-- <tr>
 <td>Success URI: </td>
 <td colspan="3"><input name="surl"  size="64"  /></td>
 </tr>
 <tr>
 <td>Failure URI: </td>
 <td colspan="3"><input name="furl"  size="64" /></td>
-</tr>
-<tr>
-<td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" /></td>
-</tr>
-<tr>
+</tr> -->
+<td>Last Name: </td>
+<td><input name="lastname" id="lastname"  /></td>
+<!-- <tr>
 <td><b>Optional Parameters</b></td>
 </tr>
 <tr>
-<td>Last Name: </td>
-<td><input name="lastname" id="lastname"  /></td>
 <td>Cancel URI: </td>
 <td><input name="curl" value="" /></td>
 </tr>
@@ -89,24 +83,10 @@ and open the template in the editor.
 <td><input name="udf5"  /></td>
 <td>PG: </td>
 <td><input name="pg"  /></td>
-</tr>
+</tr> -->
 <td colspan="4"><input type="submit" value="submit"/></td>
 </tr>
 </table>
 </form>
 </body>
-<script>
-     function Makecall(){
-        var data = { preHashString: 'JBZaLc|AHJ3112|100|ABCD|Rohit|rohit.galgali@gmail.com|2222222||||||||||'};
-        var url = 'http://localhost:777/createHash';
-        $http.post(url, data).success(function (data, status) {
-            console.log(status);
-            if (status == 200) {
-                document.getElementById('hash').value = data.hash;
-                document.getElementById('paymentForm').submit();
-            }
-        });
-     }
-      
-</script>
 </html>
