@@ -47,6 +47,23 @@ app.get('/BookingDetails/:id',function(req,res){
     res.render("BookingDetails",{seatNumber: req.params.id, });
 })
 
+
+app.post("/SuccessPage", urlencodedParser, function(req, res){
+    console.log(req.body);
+    res.render("SuccessPage", {txnId: req.body.txnid, productInfo: req.body.productinfo, 
+                            amount: req.body.amount, firstName: req.body.firstname, lastName: req.body.lastname});
+})
+
+
+
+app.post("/FailurePage", urlencodedParser, function(req, res){
+    console.log(req.body);
+    res.render("SuccessPage", {txnId: req.body.txnid, productInfo: req.body.productinfo, 
+                            amount: req.body.amount, firstName: req.body.firstname, lastName: req.body.lastname});
+})
+
+
+
 app.post('/payMoney', urlencodedParser, function (req, res) {
     var salt = 'DiaeHToBX8';
     var hashString = '';
@@ -80,8 +97,8 @@ app.post('/payMoney', urlencodedParser, function (req, res) {
         phone: req.body.phone,
         lastname: req.body.lastname,
         firstname: req.body.firstname,
-        surl: "http://localhost:777/success", //"http://localhost:3000/payu/success"
-        furl: "http://localhost:777/success", //"http://localhost:3000/payu/fail"
+        surl: "http://localhost:777/SuccessPage", //"http://localhost:3000/payu/success"
+        furl: "http://localhost:777/FailurePage", //"http://localhost:3000/payu/fail"
     };
 
     var params = Object.assign(payuData, paymentData);
