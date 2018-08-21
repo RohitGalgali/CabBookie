@@ -1,10 +1,11 @@
-var express = require("express");
-var app = express();
-var sha512 = require("js-sha512");
+const express = require("express");
+const app = express();
+const sha512 = require("js-sha512");
 const carModel = require("./Model/CarModel");
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: true });
-var request = require('request');
+const bodyParser = require('body-parser');
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
+const request = require('request');
+const path = require('path');
 app.set('view engine', 'ejs');
 
 var header ='fblhmYVnPpKm+Ng7Nz30WpckWGGmVLZDe/j6sNawbbo='; //will be provided by payumoney
@@ -12,6 +13,10 @@ var header ='fblhmYVnPpKm+Ng7Nz30WpckWGGmVLZDe/j6sNawbbo='; //will be provided b
 app.get('/', function(req,res){
     res.render("Home");
 });
+
+app.get("/about.html",(req,res)=>{
+res.sendFile(path.resolve(__dirname,"views/about.html"));
+})
 
 app.get('/availablecars/:id', function(req,res){
     if(req.params.id == 'a2p')
@@ -54,15 +59,11 @@ app.post("/SuccessPage", urlencodedParser, function(req, res){
                             amount: req.body.amount, firstName: req.body.firstname, lastName: req.body.lastname});
 })
 
-
-
 app.post("/FailurePage", urlencodedParser, function(req, res){
     console.log(req.body);
     res.render("SuccessPage", {txnId: req.body.txnid, productInfo: req.body.productinfo, 
                             amount: req.body.amount, firstName: req.body.firstname, lastName: req.body.lastname});
 })
-
-
 
 app.post('/payMoney', urlencodedParser, function (req, res) {
     var salt = 'DiaeHToBX8';
