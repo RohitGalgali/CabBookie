@@ -14,9 +14,21 @@ app.get('/', function(req,res){
     res.render("Home");
 });
 
+app.get('/index.html', function(req,res){
+    res.render("Home");
+});
+
 app.get("/about.html",(req,res)=>{
 res.sendFile(path.resolve(__dirname,"views/about.html"));
 })
+
+app.get("/services.html",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,"views/services.html"));
+    })
+
+app.get("/contact.html",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,"views/contact.html"));
+    })
 
 app.get('/availablecars/:id', function(req,res){
     if(req.params.id == 'a2p')
