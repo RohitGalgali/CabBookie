@@ -15,6 +15,7 @@ app.get('/', function(req,res){
 });
 
 app.get('/index.html', function(req,res){
+    console.log('Recieved');
     res.render("Home");
 });
 
@@ -39,7 +40,7 @@ app.get('/availablecars/:id', function(req,res){
     {
         res.render("AvailableCars");
     }
-    // res.sendFile(path.join(__dirname, 'View', 'AvailableCars.html'));
+    //res.sendFile(path.resolve(__dirname,"views/AvailableCars.html"));
     console.log(req.params.id);
 })
 
@@ -124,5 +125,5 @@ app.post('/payMoney', urlencodedParser, function (req, res) {
 });
 
 app.use(express.static('Resources'));
-
+//app.use('/required', express.static('required'));
 app.listen(777);
