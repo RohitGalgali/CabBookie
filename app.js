@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 const request = require('request');
 const path = require('path');
+
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/BookingEntries');
 app.set('view engine', 'ejs');
 
 var header ='fblhmYVnPpKm+Ng7Nz30WpckWGGmVLZDe/j6sNawbbo='; //will be provided by payumoney

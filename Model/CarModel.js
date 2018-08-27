@@ -7,4 +7,18 @@ var carModel = {
 function getSeats(){
     return [1,2,3,4];
 }
+
 module.exports = carModel;
+
+const mongoose = require('mongoose');
+
+const carEntrySchema = new mongoose.Schema({
+SeatNumber: Number,
+CarID: String,
+Date: { type: Date, default: Date.now },
+DrivingDirection: String
+});
+
+const carEntry = mongoose.model('Post', carEntrySchema);
+
+module.exports = carEntry;
