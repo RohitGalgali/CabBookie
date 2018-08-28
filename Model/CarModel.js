@@ -10,15 +10,15 @@ function getSeats(){
 
 module.exports = carModel;
 
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
-const carEntrySchema = new mongoose.Schema({
-SeatNumber: Number,
-CarID: String,
-Date: { type: Date, default: Date.now },
-DrivingDirection: String
-});
+// const carEntrySchema = new mongoose.Schema({
+// SeatNumber: Number,
+// CarID: String,
+// Date: { type: Date, default: Date.now },
+// DrivingDirection: String
+// });
 
-const carEntry = mongoose.model('Post', carEntrySchema);
+// const carEntry = mongoose.model('Post', carEntrySchema);
 
-module.exports = carEntry;
+// module.exports = carEntry;
