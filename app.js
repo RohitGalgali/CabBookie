@@ -36,10 +36,10 @@ app.get("/contact", (req, res) => {
 
 app.get('/availablecars/:id', function (req, res) {
     if (req.params.id == 'a2p') {
-        res.render("AvailableCars");
+        res.render("AvailableCars", {direction: 'a2p'});
     }
     else if (req.params.id == 'p2a') {
-        res.render("AvailableCars");
+        res.render("AvailableCars", {direction: 'p2a'});
     }
     //res.sendFile(path.resolve(__dirname,"views/AvailableCars.html"));
     console.log(req.params.id);
@@ -79,6 +79,30 @@ app.post("/FailurePage", urlencodedParser, function (req, res) {
         amount: req.body.amount, firstName: req.body.firstname, lastName: req.body.lastname
     });
 })
+
+app.post('/carDetails', urlencodedParser, function(req, res){
+    
+    
+})
+
+app.post('/InnovaBooking', urlencodedParser, function(req, res){
+    console.log('Innova');
+    console.log(req.body.date);
+    console.log(req.body.direction);
+})
+
+app.post('/EtiosBooking', urlencodedParser, function(req, res){
+    console.log('Etios');
+    console.log(req.body.date);
+    console.log(req.body.direction);
+})
+
+app.post('/EnjoyBooking', urlencodedParser, function(req, res){
+    console.log('Enjoy');
+    console.log(req.body.date);
+    console.log(req.body.direction);
+})
+
 
 app.post('/payMoney', urlencodedParser, function (req, res) {
     var salt = 'DiaeHToBX8';
