@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
     res.render("Home");
 });
 
-app.get('/index.html', function (req, res) {
+app.get('/index', function (req, res) {
     res.render("Home");
 });
 

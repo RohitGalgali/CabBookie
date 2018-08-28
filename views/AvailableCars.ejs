@@ -1,104 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-    <% include ./layouts/head.ejs %>
-    <% include ./layouts/navigation.ejs %>
+<% include ./layouts/head.ejs %>
+  <% include ./layouts/navigation.ejs %>
 
-<body>
-  <!-- Page Content -->
-  <div class="container">
+    <body>
+      <!-- Page Content -->
+      <div class="container">
 
-      <ol class="breadcrumb">
+        <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="/index.html">Home</a>
           </li>
           <li class="breadcrumb-item active">Available Cars</li>
         </ol>
+        <div>
+          <div class="col-lg-8 mb-4">
+            <h3>Select Journey Details</h3>
+            <form name="CarSelection" id="selectionForm">
+              <div class="control-group form-group">
+                <div class="controls">
+                  <label>Journey Date:</label>
+                  <input type="date" class="form-control" id="date" required data-validation-required-message="Please enter journey date.">
+                  <p class="help-block"></p>
+                </div>
+              </div>
+              <div class="control-group form-group">
+                <div class="controls">
+                  <div class="row">
+                  <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                      <a href="#"><img class="card-img-top" src="/ToyotaInnova.jpg" alt=""></a>
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          <!-- <a href="/cardetails/innova" onclick="validateDate(document.DateValue)">Select Seats</a> -->
+                          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+                        </h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur
+                          eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt,
+                          illum tempora ex quae? Nihil, dolorem!</p>
+                      </div>
+                    </div>
+                  </div>
 
-    <!-- Portfolio Section -->
-    <div class="row">
-        <div class="col-lg-6">
-          <h5>Travel Date : <input type="date"></h5>
-        </div>
-     </div>  
-    <h2>Available Cabs</h2>
-
-    <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="/cardetails/innova">Select Seats</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                  <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                      <a href="#"><img class="card-img-top" src="/Etios.jpg" alt=""></a>
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          <!-- <a href="/cardetails/etios" onclick="validateDate()">Select Seats</a> -->
+                          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+                        </h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+                          odio, gravida pellentesque urna varius vitae.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                      <a href="#"><img class="card-img-top" src="/ChevroletEnjoy.jpg" alt=""></a>
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          <!-- <a href="/cardetails/enjoy" onclick="validateDate()">Select Seats</a> -->
+                          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+                        </h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error
+                          quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis
+                          mollitia recusandae vero vel quam!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div id="success"></div>
+              <!-- For success/fail messages -->
+              
+            </form>
           </div>
         </div>
+        <!-- Portfolio Section -->
+        <hr>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Select Seats</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Select Seats</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.row -->
+      <!-- /.container -->
 
-    <!-- Features Section -->
-    <!-- <div class="row">
-      <div class="col-lg-6">
-        <h2>Modern Business Features</h2>
-        <p>The Modern Business template by Start Bootstrap includes:</p>
-        <ul>
-          <li>
-            <strong>Bootstrap v4</strong>
-          </li>
-          <li>jQuery</li>
-          <li>Font Awesome</li>
-          <li>Working contact form with validation</li>
-          <li>Unstyled page elements for easy customization</li>
-        </ul>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-      </div>
-      <div class="col-lg-6">
-        <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
-      </div>
-    </div> -->
-    <!-- /.row -->
+      <% include ./layouts/footer.ejs %>
+    </body>
 
-    <hr>
-
-    
-
-  </div>
-  <!-- /.container -->
-
- <% include ./layouts/footer.ejs %>
-</body>
-
-<!-- <script>
-  function GetCarDetails() {
-    var para = document.createElement("p");
-    var node = document.createTextNode("This is new.");
-    para.appendChild(node);
-    var element = document.getElementById("BookingArea");
-    element.appendChild(para);
-  }
-</script> -->
+    <script>
+      function validateDate() {
+        var element = document.getElementById("DateValue");
+        alert(element);
+        return false;
+      }
+    </script>
 
 </html>
