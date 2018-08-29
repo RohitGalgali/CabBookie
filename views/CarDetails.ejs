@@ -6,9 +6,9 @@
 <table>
         
     <tr>
-        <% for (var seat of seatArray) { %>
+        <% for (var data of Dataset) { %>
         <td>
-            <a href="/BookingDetails/<%=seat%>" class="btn btn-primary"><%=seat%></a>
+            <a href="/BookingDetails/<%=seat%>" class="btn btn-primary"><%=data.SeatNumber%></a>
         </td>
         <% } %>
         <td>

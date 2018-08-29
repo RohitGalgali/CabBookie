@@ -1,24 +1,24 @@
-var carModel = {
-    carName : "MyModelCar", 
-    seats : [1,2,3,4,5],
-    getAvailableSeats : getSeats()
-};
+// var carModel = {
+//     carName : "MyModelCar", 
+//     seats : [1,2,3,4,5],
+//     getAvailableSeats : getSeats()
+// };
 
-function getSeats(){
-    return [1,2,3,4];
-}
+// function getSeats(){
+//     return [1,2,3,4];
+// }
 
-module.exports = carModel;
+// module.exports = carModel;
 
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// const carEntrySchema = new mongoose.Schema({
-// SeatNumber: Number,
-// CarID: String,
-// Date: { type: Date, default: Date.now },
-// DrivingDirection: String
-// });
+const carEntrySchema = new mongoose.Schema({
+SeatNumber: Number,
+CarID: String,
+Date: { type: Date, default: Date.now },
+DrivingDirection: String
+});
 
-// const carEntry = mongoose.model('Post', carEntrySchema);
+const carEntries = mongoose.model('CarBooking', carEntrySchema);
 
-// module.exports = carEntry;
+module.exports = carEntries;
