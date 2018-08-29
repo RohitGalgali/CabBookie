@@ -18,10 +18,6 @@ app.get('/', function (req, res) {
     res.render("Home");
 });
 
-app.get('/index', function (req, res) {
-    res.render("Home");
-});
-
 app.get("/about", (req, res) => {
     res.render("about");
 })
@@ -41,27 +37,11 @@ app.get('/availablecars/:id', function (req, res) {
     else if (req.params.id == 'p2a') {
         res.render("AvailableCars", {direction: 'p2a'});
     }
-    //res.sendFile(path.resolve(__dirname,"views/AvailableCars.html"));
-    console.log(req.params.id);
 })
 
-app.get('/cardetails/:id', function (req, res) {
-    if (req.params.id == 'enjoy') {
-        res.render("CarDetails", { name: carModel.carName, seatArray: carModel.getAvailableSeats });
-    }
-    else if (req.params.id == 'etios') {
-        res.render("CarDetails", { name: carModel.carName, seatArray: carModel.getAvailableSeats });
-    }
-    else if (req.params.id == 'innova') {
-        res.render("CarDetails", { name: carModel.carName, seatArray: carModel.getAvailableSeats });
-    }
-    // res.sendFile(path.join(__dirname, 'View', 'AvailableCars.html'));
-    console.log(req.params.id);
-})
 
-app.get('/BookingDetails/:id', function (req, res) {
-    res.render("BookingDetails", { seatNumber: req.params.id, });
-})
+
+
 
 
 app.post("/SuccessPage", urlencodedParser, function (req, res) {
@@ -86,9 +66,7 @@ app.post('/carDetails', urlencodedParser, function(req, res){
 })
 
 app.post('/InnovaBooking', urlencodedParser, function(req, res){
-    console.log('Innova');
-    console.log(req.body.date);
-    console.log(req.body.direction);
+    res.render("CarDetails", { name: carModel.carName, seatArray: carModel.getAvailableSeats });
 })
 
 app.post('/EtiosBooking', urlencodedParser, function(req, res){
@@ -103,6 +81,9 @@ app.post('/EnjoyBooking', urlencodedParser, function(req, res){
     console.log(req.body.direction);
 })
 
+app.get('/BookingDetails/:id', function (req, res) {
+    res.render("BookingDetails", { seatNumber: req.params.id, });
+})
 
 app.post('/payMoney', urlencodedParser, function (req, res) {
     var salt = 'DiaeHToBX8';
