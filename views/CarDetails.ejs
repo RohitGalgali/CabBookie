@@ -8,19 +8,36 @@
                 <div class="col-lg-5 mb-4">
                     <div class="card-body">
                         <h4 class="card-title">Journey Details</h4>
-                        <h6 class="card-subtitle mb-3 text-muted" style="text-align: left">Car: Innova</h6>
-                        <h6 class="card-subtitle mb-3 text-muted">Travel: Aurangabad To Pune</h6>
-                        <h6 class="card-subtitle mb-3 text-muted">Date: 7th August 2018</h6>
+                        <h6 class="card-subtitle mb-3 text-muted" style="text-align: left">Car:
+                            <%= CarID%>
+                        </h6>
+                        <h6 class="card-subtitle mb-3 text-muted">Travel:
+                            <%if(Direction == 'a2p')
+                            {%>
+                                Aurangabad To Pune
+                                <%}else{%>
+                                    Pune To Aurangabad
+                                    <%}%>
+
+                        </h6>
+                        <h6 class="card-subtitle mb-3 text-muted">Date:
+                            <%= Date%>
+                        </h6>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-2 mb-4"></div>
-
                     <div class="col-lg-1 mb-4">
                         <div class="card h-100">
                             <h4 class="squaredOne">
-                                <input type="checkbox" value="None" id="squaredOne" name="check" />
-                                <label for="squaredOne"></label>
+                                <%for(var entry of Dataset)
+                                { if(entry.SeatNumber == 1){%>
+                                    <input type="checkbox"  value="None" id="squaredOne" name="check" />
+                                    <label for="squaredOne"></label>
+                                    <%}else{%>
+                                        <input type="checkbox" value="None" id="squaredOne" name="check" />
+                                        <label for="squaredOne"></label>
+                                        <%} }%>
                             </h4>
                         </div>
                     </div>

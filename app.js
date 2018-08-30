@@ -55,11 +55,6 @@ app.post("/FailurePage", urlencodedParser, function (req, res) {
     });
 })
 
-app.post('/carDetails', urlencodedParser, function (req, res) {
-
-
-})
-
 app.post('/InnovaBooking', urlencodedParser, function (req, res) {
     carEntries.find({
         CarID: 'innova',
@@ -70,7 +65,7 @@ app.post('/InnovaBooking', urlencodedParser, function (req, res) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            res.render("CarDetails", { Dataset: data, CarID: 'Innova', Seats: 5 });
+            res.render("CarDetails", { Dataset: data, Seats: 5, CarID: 'Innova', Direction: req.body.direction, Date: req.body.date });
         }
     })
 })
