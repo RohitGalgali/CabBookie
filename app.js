@@ -70,7 +70,7 @@ app.post('/InnovaBooking', urlencodedParser, function (req, res) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            res.render("CarDetails", { Dataset: data, CarID: 'Innova' });
+            res.render("CarDetails", { Dataset: data, CarID: 'Innova', Seats: 5 });
         }
     })
 })
@@ -85,7 +85,7 @@ app.post('/EtiosBooking', urlencodedParser, function (req, res) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            res.render("CarDetails", { Dataset: data, CarID: 'Etios' });
+            res.render("CarDetails", { Dataset: data, CarID: 'Etios', Seats: 4 });
         }
     })
 })
@@ -100,7 +100,7 @@ app.post('/EnjoyBooking', urlencodedParser, function (req, res) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            res.render("CarDetails", { Dataset: data, CarID: 'Enjoy' });
+            res.render("CarDetails", { Dataset: data, CarID: 'Enjoy', Seats: 5 });
         }
     })
 })
