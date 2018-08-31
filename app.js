@@ -156,4 +156,3 @@ app.post('/payMoney', urlencodedParser, function (req, res) {
 app.use(express.static('Resources'));
 //app.use('/required', express.static('required'));
 app.listen(777);
-mongoose.connect('mongodb://localhost/CarEntries');
