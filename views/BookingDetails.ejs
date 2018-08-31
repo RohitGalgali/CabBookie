@@ -10,12 +10,18 @@
                         <h3>Enter Personal details</h3>
                         <form action="/payMoney" name="payuform" method=POST>
                             <input type="hidden" name="txnid" value="AHJ3112" />
-                            <input type="hidden" name="productinfo" value="ABCD" />
+                            <input type="hidden" name="productinfo" value=<%= seatNumber%> />
                             <input type="hidden" name="amount" value="100" />
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>First Name:</label>
                                     <input type="text" class="form-control" name="firstname" id="firstname" required data-validation-required-message="Please enter your name.">
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Last Name: </label>
+                                    <input type="text" class="form-control" name="lastname" id="lastname" required data-validation-required-message="Please enter your name.">
                                 </div>
                             </div>
                             <div class="control-group form-group">
@@ -30,12 +36,7 @@
                                     <input type="text" class="form-control" name="phone" id="phone" required data-validation-required-message="Please enter your name.">
                                 </div>
                             </div>
-                            <div class="control-group form-group">
-                                <div class="controls">
-                                    <label>Last Name: </label>
-                                    <input type="text" class="form-control" name="lastname" id="lastname" required data-validation-required-message="Please enter your name.">
-                                </div>
-                            </div>
+
                             <button type="submit" class="btn btn-primary" id="sendMessageButton">Book Seat</button>
                         </form>
                     </div>

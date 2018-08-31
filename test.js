@@ -5,9 +5,16 @@ mongoose.connect('mongodb://localhost/CarEntries');
 
 carEntry.create({
     SeatNumber: 1,
-CarID: "innova",
-Date: "12/12/2222",
-DrivingDirection: "atop"
-}, (error, carEntry)=>{
-console.log(error, carEntry);
+    CarID: "Innova",
+    Date: "2018-09-01",
+    DrivingDirection: "a2p"
+}, (error, carEntry) => {
+    console.log(error, carEntry);
+
 })
+// carEntry.find({},(error, carEntry)=>{
+//     if(!error)
+//     {
+//         console.log(error, carEntry);
+//     }
+//})

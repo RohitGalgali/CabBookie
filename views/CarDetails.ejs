@@ -3,7 +3,7 @@
 <% include ./layouts/head.ejs %>
     <% include ./layouts/navigation.ejs %>
 
-        <body>
+        <body  onload="custom()">
             <div class="container">
                 <div class="col-lg-5 mb-4">
                     <div class="card-body">
@@ -25,92 +25,103 @@
                         </h6>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-2 mb-4"></div>
-                    <div class="col-lg-1 mb-4">
-                        <div class="card h-100">
-                            <h4 class="squaredOne">
-                                <%if(Dataset.length===0){%>
-                                    <input type="checkbox"  value="None" id="squaredOne" name="check" />
-                                    <%} else {%>
-                                <%for(var entry of Dataset){ %>
-                                     <%if(entry.SeatNumber === 1){%>
-                                        <input type="checkbox"  value="None" id="squaredOne" name="check" />
-                                    <%}else{%>
-                                        <input type="checkbox" checked="checked" value="None" id="squaredOne" name="check" />
-                                        <%}%>
-                                    <% }%>
-                                    <%}%>
+                <form action="/BookingDetails" method="POST">
+                    <div class="row">
+                        <div class="col-lg-2 mb-4"></div>
+                        <div class="col-lg-1 mb-4">
+                            <div class="card h-100">
+                                <h4 class="squaredOne">
+                                    <input type="checkbox" value="None" id="SeatOne" name="check" />
                                     <label for="squaredOne"></label>
-                            </h4>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 mb-4">
+                            <div class="card h-100">
+                                <img src="SteeringWheel.jpg" class="squaredOne">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-1 mb-4">
-                        <div class="card h-100">
-                            <h4 class="squaredOne">
-                                <input type="checkbox" value="None" id="squaredTwo" name="check" />
-                                <label for="squaredTwo"></label>
-                            </h4>
+                    <div class="row">
+                        <div class="col-lg-2 mb-4"></div>
+                        <div class="col-lg-1 mb-4">
+                            <div class="card h-100">
+                                <h4 class="squaredOne">
+                                    <input type="checkbox" value="None" id="SeatTwo" name="check" />
+                                    <label for="SeatTwo"></label>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 mb-4">
+                            <div class="card h-100">
+                                <h4 class="squaredOne">
+                                    <input type="checkbox" value="None" id="SeatThree" name="check" />
+                                    <label for="SeatThree"></label>
+                                </h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 mb-4"></div>
-                    <div class="col-lg-1 mb-4">
-                        <div class="card h-100">
-                            <h4 class="squaredOne">
-                                <input type="checkbox" value="None" id="squaredThree" name="check" />
-                                <label for="squaredThree"></label>
-                            </h4>
+                    <div class="row">
+                        <div class="col-lg-2 mb-4"></div>
+                        <div class="col-lg-1 mb-4">
+                            <div class="card h-100">
+                                <h4 class="squaredOne">
+                                    <input type="checkbox" value="None" id="SeatFour" name="check" />
+                                    <label for="SeatFour"></label>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 mb-4">
+                            <div class="card h-100">
+                                <h4 class="squaredOne">
+                                    <input type="checkbox" value="None" id="SeatFive" name="check" />
+                                    <label for="SeatFive"></label>
+                                </h4>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-1 mb-4">
-                        <div class="card h-100">
-                            <h4 class="squaredOne">
-                                <input type="checkbox" value="None" id="squaredFour" name="check" />
-                                <label for="squaredFour"></label>
-                            </h4>
+                    <div class="row">
+                        <div class="col-lg-2 mb-4"></div>
+                        <div class="col-lg-2 mb-4">
+                            <button type="submit" class="btn btn-primary" name="button">Proceed</button>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-2 mb-4"></div>
-                    <div class="col-lg-1 mb-4">
-                        <div class="card h-100">
-                            <h4 class="squaredOne">
-                                <input type="checkbox" value="None" id="squaredFive" name="check" />
-                                <label for="squaredFive"></label>
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 mb-4">
-                        <div class="card h-100">
-                            <h4 class="squaredOne">
-                                <input type="checkbox" value="None" id="squaredSix" name="check" />
-                                <label for="squaredSix"></label>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
-
-
-            <!-- <table>
-        
-    <tr>
-        <% for (var data of Dataset) { %>
-        <td>
-            <a href="/BookingDetails/<%=seat%>" class="btn btn-primary"><%=data.SeatNumber%></a>
-        </td>
-        <% } %>
-        <td>
-            <img src="../SteeringWheel.jpg" alt="Chevrolet Enjoy" style="width:20px; height:20px;" >
-        </td>
-    </tr>
-</table> -->
             <% include ./layouts/footer.ejs %>
         </body>
+        <script>
+            function custom() {
+                var parsedJSON = JSON.parse('<%- Dataset%>');
 
+                for (var i = 0; i < parsedJSON.length; i++) {
+                    if (parsedJSON[i].SeatNumber == 1) {
+                        document.getElementById("SeatOne").checked = true;
+                        document.getElementById("SeatOne").disabled = true;
+                    }
+
+                     if (parsedJSON[i].SeatNumber == 2) {
+                        document.getElementById("SeatTwo").checked = true;
+                        document.getElementById("SeatTwo").disabled = true;
+                    }
+
+                     if (parsedJSON[i].SeatNumber == 3) {
+                        document.getElementById("SeatThree").checked = true;
+                        document.getElementById("SeatThree").disabled = true;
+                    }
+
+                     if (parsedJSON[i].SeatNumber == 4) {
+                        document.getElementById("SeatFour").checked = true;
+                        document.getElementById("SeatFour").disabled = true;
+                    }
+
+                     if (parsedJSON[i].SeatNumber == 5) {
+                        document.getElementById("SeatFive").checked = true;
+                        document.getElementById("SeatFive").disabled = true;
+                    }
+                }
+            }
+        </script>
         <style>
             /* SQUARED ONE */
             .squaredOne {

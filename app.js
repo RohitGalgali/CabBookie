@@ -1,15 +1,16 @@
 const express = require("express");
 const app = express();
 const sha512 = require("js-sha512");
-const carModel = require("./Model/CarModel");
+//const carModel = require("./Model/CarModel");
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 const request = require('request');
 const path = require('path');
-const carEntries = require('./Model/CarModel');
+const carModel = require('./Model/CarModel');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/BookingEntries');
+mongoose.connect('mongodb://localhost/CarEntries');
+
 app.set('view engine', 'ejs');
 
 var header = 'fblhmYVnPpKm+Ng7Nz30WpckWGGmVLZDe/j6sNawbbo='; //will be provided by payumoney
@@ -56,16 +57,17 @@ app.post("/FailurePage", urlencodedParser, function (req, res) {
 })
 
 app.post('/InnovaBooking', urlencodedParser, function (req, res) {
-    carEntries.find({
-        CarID: 'innova',
-        Date: req.body.date,
-        DrivingDirection: req.body.direction
-    }, (error, data) => {
+    carModel.find({
+       
+    }, (error, carEntries) => {
         if (error) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            res.render("CarDetails", { Dataset: data, Seats: 5, CarID: 'Innova', Direction: req.body.direction, Date: req.body.date });
+            console.log(req.body.date);
+            console.log(req.body.direction);
+            console.log(carEntries);
+            res.render("CarDetails", { Dataset: JSON.stringify(carEntries), Seats: 5, CarID: 'Innova', Direction: req.body.direction, Date: req.body.date });
         }
     })
 })
@@ -80,7 +82,7 @@ app.post('/EtiosBooking', urlencodedParser, function (req, res) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            res.render("CarDetails", { Dataset: data, CarID: 'Etios', Seats: 4 });
+            res.render("CarDetails", { Dataset: data, CarID: 'Etios', Direction: req.body.direction, Date: req.body.date  });
         }
     })
 })
@@ -95,13 +97,14 @@ app.post('/EnjoyBooking', urlencodedParser, function (req, res) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            res.render("CarDetails", { Dataset: data, CarID: 'Enjoy', Seats: 5 });
+            
+            res.render("CarDetails", { Dataset: data, CarID: 'Enjoy',  Direction: req.body.direction, Date: req.body.date  });
         }
     })
 })
 
-app.get('/BookingDetails/:id', function (req, res) {
-    res.render("BookingDetails", { seatNumber: req.params.id, });
+app.post('/BookingDetails',urlencodedParser ,function (req, res) {
+    res.render("BookingDetails", { seatNumber: 1 });
 })
 
 app.post('/payMoney', urlencodedParser, function (req, res) {
