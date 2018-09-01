@@ -3,89 +3,93 @@
 <% include ./layouts/head.ejs %>
     <% include ./layouts/navigation.ejs %>
 
-        <body  onload="custom()">
+        <body onload="custom()">
             <div class="container">
                 <div class="col-lg-5 mb-4">
-                    <div class="card-body">
-                        <h4 class="card-title">Journey Details</h4>
-                        <h6 class="card-subtitle mb-3 text-muted" style="text-align: left">Car:
-                            <%= CarID%>
-                        </h6>
-                        <h6 class="card-subtitle mb-3 text-muted">Travel:
-                            <%if(Direction == 'a2p')
+                    <form action="/BookingDetails" method="POST">
+                        <div class="card-body">
+                            <h4 class="card-title">Journey Details</h4>
+                            <h6 class="card-subtitle mb-3 text-muted" style="text-align: left">Car:
+                                <%= CarID%>
+                                <input type="hidden" name="CarType" value="<%= CarID%>">
+                            </h6>
+                            <h6 class="card-subtitle mb-3 text-muted">Travel:
+                                <%if(Direction == 'a2p')
                             {%>
-                                Aurangabad To Pune
-                                <%}else{%>
-                                    Pune To Aurangabad
-                                    <%}%>
+                                    Aurangabad To Pune
+                                    <input type="hidden" name="direction" value="a2p">
+                                    <%}else{%>
+                                        Pune To Aurangabad
+                                        <input type="hidden" name="direction" value="p2a">
+                                        <%}%>
 
-                        </h6>
-                        <h6 class="card-subtitle mb-3 text-muted">Date:
-                            <%= Date%>
-                        </h6>
+                            </h6>
+                            <h6 class="card-subtitle mb-3 text-muted">Date:
+                                <%= Date%>
+                            </h6>
+                        </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2 mb-4"></div>
+                    <div class="col-lg-1 mb-4">
+                        <div class="card h-100">
+                            <h4 class="squaredOne">
+                                <input type="checkbox" value="1" id="SeatOne" name="check" />
+                                <label for="squaredOne"></label>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 mb-4">
+                        <div class="card h-100">
+                            <img src="SteeringWheel.jpg" class="squaredOne">
+                        </div>
                     </div>
                 </div>
-                <form action="/BookingDetails" method="POST">
-                    <div class="row">
-                        <div class="col-lg-2 mb-4"></div>
-                        <div class="col-lg-1 mb-4">
-                            <div class="card h-100">
-                                <h4 class="squaredOne">
-                                    <input type="checkbox" value="None" id="SeatOne" name="check" />
-                                    <label for="squaredOne"></label>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-1 mb-4">
-                            <div class="card h-100">
-                                <img src="SteeringWheel.jpg" class="squaredOne">
-                            </div>
+                <div class="row">
+                    <div class="col-lg-2 mb-4"></div>
+                    <div class="col-lg-1 mb-4">
+                        <div class="card h-100">
+                            <h4 class="squaredOne">
+                                <input type="checkbox" value="2" id="SeatTwo" name="check" />
+                                <label for="SeatTwo"></label>
+                            </h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-2 mb-4"></div>
-                        <div class="col-lg-1 mb-4">
-                            <div class="card h-100">
-                                <h4 class="squaredOne">
-                                    <input type="checkbox" value="None" id="SeatTwo" name="check" />
-                                    <label for="SeatTwo"></label>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-1 mb-4">
-                            <div class="card h-100">
-                                <h4 class="squaredOne">
-                                    <input type="checkbox" value="None" id="SeatThree" name="check" />
-                                    <label for="SeatThree"></label>
-                                </h4>
-                            </div>
+                    <div class="col-lg-1 mb-4">
+                        <div class="card h-100">
+                            <h4 class="squaredOne">
+                                <input type="checkbox" value="3" id="SeatThree" name="check" />
+                                <label for="SeatThree"></label>
+                            </h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-2 mb-4"></div>
-                        <div class="col-lg-1 mb-4">
-                            <div class="card h-100">
-                                <h4 class="squaredOne">
-                                    <input type="checkbox" value="None" id="SeatFour" name="check" />
-                                    <label for="SeatFour"></label>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-1 mb-4">
-                            <div class="card h-100">
-                                <h4 class="squaredOne">
-                                    <input type="checkbox" value="None" id="SeatFive" name="check" />
-                                    <label for="SeatFive"></label>
-                                </h4>
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 mb-4"></div>
+                    <div class="col-lg-1 mb-4">
+                        <div class="card h-100">
+                            <h4 class="squaredOne">
+                                <input type="checkbox" value="4" id="SeatFour" name="check" />
+                                <label for="SeatFour"></label>
+                            </h4>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-2 mb-4"></div>
-                        <div class="col-lg-2 mb-4">
-                            <button type="submit" class="btn btn-primary" name="button">Proceed</button>
+                    <div class="col-lg-1 mb-4">
+                        <div class="card h-100">
+                            <h4 class="squaredOne">
+                                <input type="checkbox" value="5" id="SeatFive" name="check" />
+                                <label for="SeatFive"></label>
+                            </h4>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 mb-4"></div>
+                    <div class="col-lg-2 mb-4">
+                        <button type="submit" class="btn btn-primary" name="button">Proceed</button>
+                    </div>
+                </div>
                 </form>
             </div>
             <% include ./layouts/footer.ejs %>
@@ -93,29 +97,29 @@
         <script>
             function custom() {
                 var parsedJSON = JSON.parse('<%- Dataset%>');
-
+                console.log(parsedJSON);
                 for (var i = 0; i < parsedJSON.length; i++) {
                     if (parsedJSON[i].SeatNumber == 1) {
                         document.getElementById("SeatOne").checked = true;
                         document.getElementById("SeatOne").disabled = true;
                     }
 
-                     if (parsedJSON[i].SeatNumber == 2) {
+                    if (parsedJSON[i].SeatNumber == 2) {
                         document.getElementById("SeatTwo").checked = true;
                         document.getElementById("SeatTwo").disabled = true;
                     }
 
-                     if (parsedJSON[i].SeatNumber == 3) {
+                    if (parsedJSON[i].SeatNumber == 3) {
                         document.getElementById("SeatThree").checked = true;
                         document.getElementById("SeatThree").disabled = true;
                     }
 
-                     if (parsedJSON[i].SeatNumber == 4) {
+                    if (parsedJSON[i].SeatNumber == 4) {
                         document.getElementById("SeatFour").checked = true;
                         document.getElementById("SeatFour").disabled = true;
                     }
 
-                     if (parsedJSON[i].SeatNumber == 5) {
+                    if (parsedJSON[i].SeatNumber == 5) {
                         document.getElementById("SeatFive").checked = true;
                         document.getElementById("SeatFive").disabled = true;
                     }

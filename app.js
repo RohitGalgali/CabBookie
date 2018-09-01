@@ -58,15 +58,18 @@ app.post("/FailurePage", urlencodedParser, function (req, res) {
 
 app.post('/InnovaBooking', urlencodedParser, function (req, res) {
     carModel.find({
+        CarID: 'Innova',
+        Date: req.body.date,
+        DrivingDirection: req.body.direction
        
+    },{
+        SeatNumber : 1
     }, (error, carEntries) => {
         if (error) {
             res.status(500).send({ error: "error in finding " })
         }
         else {
-            console.log(req.body.date);
-            console.log(req.body.direction);
-            console.log(carEntries);
+           console.log(carEntries);
             res.render("CarDetails", { Dataset: JSON.stringify(carEntries), Seats: 5, CarID: 'Innova', Direction: req.body.direction, Date: req.body.date });
         }
     })
@@ -104,7 +107,8 @@ app.post('/EnjoyBooking', urlencodedParser, function (req, res) {
 })
 
 app.post('/BookingDetails',urlencodedParser ,function (req, res) {
-    res.render("BookingDetails", { seatNumber: 1 });
+    console.log(req.body);
+    res.render("BookingDetails", { seatNumbers: req.body.check });
 })
 
 app.post('/payMoney', urlencodedParser, function (req, res) {

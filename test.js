@@ -4,7 +4,7 @@ const carEntry = require('./Model/CarModel');
 mongoose.connect('mongodb://localhost/CarEntries');
 
 carEntry.create({
-    SeatNumber: 1,
+    SeatNumber: 2,
     CarID: "Innova",
     Date: "2018-09-01",
     DrivingDirection: "a2p"
