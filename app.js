@@ -61,54 +61,73 @@ app.post('/InnovaBooking', urlencodedParser, function (req, res) {
         CarID: 'Innova',
         Date: req.body.date,
         DrivingDirection: req.body.direction
-       
-    },{
-        SeatNumber : 1
-    }, (error, carEntries) => {
-        if (error) {
-            res.status(500).send({ error: "error in finding " })
-        }
-        else {
-           console.log(carEntries);
-            res.render("CarDetails", { Dataset: JSON.stringify(carEntries), Seats: 5, CarID: 'Innova', Direction: req.body.direction, Date: req.body.date });
-        }
-    })
+
+    }, {
+            SeatNumber: 1
+        }, (error, carEntries) => {
+            if (error) {
+                res.status(500).send({ error: "error in finding " })
+            }
+            else {
+                //console.log(carEntries);
+                res.render("CarDetails", { Dataset: JSON.stringify(carEntries), Seats: 5, CarID: 'Innova', Direction: req.body.direction, Date: req.body.date });
+            }
+        })
 })
 
 app.post('/EtiosBooking', urlencodedParser, function (req, res) {
-    carEntries.find({
-        CarID: 'etios',
+    carModel.find({
+        CarID: 'Etios',
         Date: req.body.date,
         DrivingDirection: req.body.direction
-    }, (error, data) => {
-        if (error) {
-            res.status(500).send({ error: "error in finding " })
-        }
-        else {
-            res.render("CarDetails", { Dataset: data, CarID: 'Etios', Direction: req.body.direction, Date: req.body.date  });
-        }
-    })
+
+    }, {
+            SeatNumber: 1
+        }, (error, carEntries) => {
+            if (error) {
+                res.status(500).send({ error: "error in finding " })
+            }
+            else {
+                //console.log(carEntries);
+                res.render("CarDetails", { Dataset: JSON.stringify(carEntries), Seats: 5, CarID: 'Etios', Direction: req.body.direction, Date: req.body.date });
+            }
+        })
 })
 
 app.post('/EnjoyBooking', urlencodedParser, function (req, res) {
-    carEntries.find({
-        CarID: 'enjoy',
+    carModel.find({
+        CarID: 'Enjoy',
         Date: req.body.date,
         DrivingDirection: req.body.direction
-    }, (error, data) => {
-        if (error) {
-            res.status(500).send({ error: "error in finding " })
-        }
-        else {
-            
-            res.render("CarDetails", { Dataset: data, CarID: 'Enjoy',  Direction: req.body.direction, Date: req.body.date  });
-        }
-    })
+    }, {
+            SeatNumber: 1
+        }, (error, carEntries) => {
+            if (error) {
+                res.status(500).send({ error: "error in finding " })
+            }
+            else {
+                //console.log(carEntries);
+                res.render("CarDetails", { Dataset: JSON.stringify(carEntries), Seats: 5, CarID: 'Enjoy', Direction: req.body.direction, Date: req.body.date });
+            }
+        })
 })
 
-app.post('/BookingDetails',urlencodedParser ,function (req, res) {
-    console.log(req.body);
-    res.render("BookingDetails", { seatNumbers: req.body.check });
+app.post('/BookingDetails', urlencodedParser, function (req, res) {
+    //console.log(req.body);
+    for (var i = 0; i < req.body.check.length; i++) {
+        //console.log(req.body.check[i]);
+        carModel.create({
+            SeatNumber: req.body.check[i],
+            CarID: req.body.CarType,
+            Date: req.body.journeyDate,
+            DrivingDirection: req.body.direction
+        }, (error, carEntry) => {
+            if(!error)
+            {
+                res.render("BookingDetails", { seatNumbers: req.body.check });
+            }
+        })
+    }
 })
 
 app.post('/payMoney', urlencodedParser, function (req, res) {
@@ -123,10 +142,10 @@ app.post('/payMoney', urlencodedParser, function (req, res) {
     hashString += "||||||||||"
     hashString += salt;
 
-    console.log(hashString);
+    //console.log(hashString);
 
     var hash = sha512(hashString);
-    console.log(hash);
+    //console.log(hash);
 
     //res.send(req.body);
     var payuData = {
