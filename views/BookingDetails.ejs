@@ -27,13 +27,13 @@
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Email:</label>
-                                    <input type="text" class="form-control" name="email" id="email" required data-validation-required-message="Please enter your name.">
+                                    <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Please enter your name.">
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Phone:</label>
-                                    <input type="text" class="form-control" name="phone" id="phone" required data-validation-required-message="Please enter your name.">
+                                    <input type="number" class="form-control" name="phone" id="phone" required data-validation-required-message="Please enter your name.">
                                 </div>
                             </div>
 
@@ -44,5 +44,5 @@
             </div>
             <% include ./layouts/footer.ejs %>
         </body>
-
+        <script src="js/jqBootstrapValidation.js"></script>
 </html>
