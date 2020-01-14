@@ -18,7 +18,7 @@ module.exports = (req, res) => {
     var hash = sha512(hashString);
 
     var payuData = {
-        key: 'BJZPBL6X',
+        key: '**********',
         salt: salt,
         service_provider: 'payu_paisa',
         hash: hash
