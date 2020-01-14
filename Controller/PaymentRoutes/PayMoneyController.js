@@ -1,12 +1,12 @@
 const sha512 = require("js-sha512");
 const request = require('request');
-var header = 'fblhmYVnPpKm+Ng7Nz30WpckWGGmVLZDe/j6sNawbbo='; //will be provided by payumoney
+var header = '**************************'; //will be provided by payumoney
 
 
 module.exports = (req, res) => {
-    var salt = 'DiaeHToBX8';
+    var salt = '****************';
     var hashString = '';
-    hashString += "BJZPBL6X|";
+    hashString += "************|";
     hashString += req.body.txnid + "|";
     hashString += req.body.amount + "|";
     hashString += req.body.productinfo + "|";
